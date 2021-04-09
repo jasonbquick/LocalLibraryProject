@@ -1,8 +1,10 @@
 function getTotalBooksCount(books) {
-  let total = 0;
-  for (item in books){
-    total += 1;
-  }
+  let accumulator = 0;
+  let total = books.reduce((acc, book) => acc + book, accumulator);
+  // let total = 0;
+  // for (item in books){
+  //   total += 1;
+  // }
   return total;
 }
 
