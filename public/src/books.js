@@ -21,13 +21,17 @@ function partitionBooksByBorrowedStatus(books) {
   let returnedBooks = [];
   for (item in books){
     const isBorrowed = books[item].borrows;
-    if (isBorrowed[0].returned === true){
-      returnedBooks.push(books[item])
-    }
-    else {borrowedBooks.push(books[item])}
+    let returnedBooks = isBorrowed.filter((book) => book.returned === true);
+    let borrowedBooks = isBorrowed.filter((book) => book.returned === false);
+    const result = [borrowedBooks, returnedBooks];
+    return result;
+    // if (isBorrowed[0].returned === true){
+    //   returnedBooks.push(books[item])
+    // }
+    // else {borrowedBooks.push(books[item])}
   }
-  const result = [borrowedBooks, returnedBooks];
-  return result;
+  // const result = [borrowedBooks, returnedBooks];
+  // return result;
 }
 
 function getBorrowersForBook(book, accounts) {
