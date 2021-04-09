@@ -1,11 +1,13 @@
 function findAccountById(accounts, id) {
-  for (account in accounts) {
-    const name = accounts[account];
-    const accountId = name.id;
-    if (id === accountId) {
-      return name;
-    }
-  }
+  let result = accounts.find((account) => account.id === id);
+  return result;
+//   for (account in accounts) {
+//     const name = accounts[account];
+//     const accountId = name.id;
+//     if (id === accountId) {
+//       return name;
+//     }
+//   }
 }
 
 function sortAccountsByLastName(accounts) {
