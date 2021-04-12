@@ -17,21 +17,18 @@ function findBookById(books, id) {
 }
 
 function partitionBooksByBorrowedStatus(books) {
-  let borrowedBooks = [];
-  let returnedBooks = [];
+  let borrowedBooks;
+  let returnedBooks;
   for (item in books){
     const isBorrowed = books[item].borrows;
-    let returnedBooks = isBorrowed.filter((book) => book.returned === true);
-    let borrowedBooks = isBorrowed.filter((book) => book.returned === false);
-    const result = [borrowedBooks, returnedBooks];
-    return result;
-    // if (isBorrowed[0].returned === true){
-    //   returnedBooks.push(books[item])
-    // }
-    // else {borrowedBooks.push(books[item])}
+    returnedBooks = isBorrowed.filter((book) => book.returned === true);
   }
-  // const result = [borrowedBooks, returnedBooks];
-  // return result;
+  for (item in books){
+    const isBorrowed = books[item].borrows;
+    borrowedBooks = isBorrowed.filter((book) => book.returned === false);
+  }
+  const result = [borrowedBooks, returnedBooks];
+    return result;
 }
 
 function getBorrowersForBook(book, accounts) {
